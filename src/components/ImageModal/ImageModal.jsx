@@ -26,26 +26,32 @@ const ImageModal = ({ isOpen, onCloseModal, image }) => {
       {image && (
         <div className={css.containerModal}>
           <div className={css.imgContainer}>
-            <img className={css.image} src={image.urls.regular} alt={image.alt_description} />
+            {image.urls && image.urls.regular && <img className={css.image} src={image.urls.regular} alt={image.alt_description || 'Image'} />}
           </div>
           <div className={css.moreInform}>
             <p className={css.author}>
               Author:{' '}
-              <a className={css.linkAuthor} href={image.user.social.portfolio_url} target='_blank' rel='noopener noreferrer'>
-                {image.user.name}
-              </a>
+              {image.user && image.user.social && image.user.social.portfolio_url ? (
+                <a className={css.linkAuthor} href={image.user.social.portfolio_url} target='_blank' rel='noopener noreferrer'>
+                  {image.user.name}
+                </a>
+              ) : (
+                'Unknown'
+              )}
             </p>
             <p className={css.likes}>
               Likes: <span className={css.likesSpan}>{image.likes}</span>
             </p>
             {image.description && <p className={css.description}>{image.description}</p>}
-            <ul className={css.tagsList}>
-              {image.tags.map((tag, index) => (
-                <li className={css.tagItem} key={index}>
-                  &#35;{tag.title}
-                </li>
-              ))}
-            </ul>
+            {image.tags && image.tags.length > 0 && (
+              <ul className={css.tagsList}>
+                {image.tags.map((tag, index) => (
+                  <li className={css.tagItem} key={index}>
+                    &#35;{tag.title}
+                  </li>
+                ))}
+              </ul>
+            )}
             <p className={css.created}>Created on: {formatDate(image.created_at)}</p>
             {image.user.location && <p className={css.location}>Location: {image.user.location}</p>}
           </div>
