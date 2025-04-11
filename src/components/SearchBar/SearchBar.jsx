@@ -1,5 +1,5 @@
-import { Field, Form, Formik } from "formik";
-import css from "./SearchBar.module.css";
+import { Field, Form, Formik } from 'formik';
+import css from './SearchBar.module.css';
 
 const SearchBar = ({ onSubmit }) => {
   const handleSubmit = (values, actions) => {
@@ -11,17 +11,10 @@ const SearchBar = ({ onSubmit }) => {
   return (
     <>
       <header className={css.searchHeader}>
-        <Formik initialValues={{ search: "" }} onSubmit={handleSubmit}>
+        <Formik initialValues={{ search: '' }} onSubmit={handleSubmit}>
           <Form>
-            <Field
-              className={css.inputSearch}
-              type="text"
-              name="search"
-              autoComplete="off"
-              autoFocus
-              placeholder="Search images and photos"
-            />
-            <button className={css.btnSearch} type="submit">
+            <Field className={css.inputSearch} type='text' name='search' autoComplete='off' autoFocus placeholder='Search images and photos' />
+            <button className={css.btnSearch} type='submit'>
               Search
             </button>
           </Form>
@@ -30,6 +23,5 @@ const SearchBar = ({ onSubmit }) => {
     </>
   );
 };
-
 
 export default SearchBar;
