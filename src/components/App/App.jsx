@@ -27,11 +27,6 @@ function App() {
   }, []);
 
   const handleSearch = async searchQuery => {
-    if (searchQuery.trim() === '') {
-      toast.error('The search field cannot be empty!');
-      setError(true);
-      return;
-    }
     try {
       setLoading(true);
       setIsSearching(true);
