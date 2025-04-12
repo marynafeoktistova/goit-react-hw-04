@@ -5,11 +5,10 @@ import toast, { Toaster } from 'react-hot-toast';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
-
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import ImageModal from '../ImageModal/ImageModal';
 import css from './App.module.css';
-import LoaderMore from '../Loader/LoaderMore';
+import Loader from '../Loader/Loader';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -97,11 +96,11 @@ function App() {
           className: css.toastTextCenter,
         }}
       />
-      {loading && <LoaderMore />}
+      {loading && <Loader />}
       {error && <ErrorMessage />}
       <ImageGallery imageList={images} openModal={openModal} />
       {!loadingMore && !isSearching && <LoadMoreBtn onClick={handleLoadMore} isVisible={isVisible} />}
-      {loadingMore && <LoaderMore />}
+      {loadingMore && <Loader />}
       <ImageModal isOpen={modalIsOpen} image={selectedImage} onCloseModal={closeModal} />
     </>
   );

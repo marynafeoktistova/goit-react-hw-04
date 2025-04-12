@@ -1,7 +1,7 @@
 import { ClipLoader } from 'react-spinners';
 import css from './Loader.module.css';
 
-const LoaderMore = () => {
+const Loader = () => {
   return (
     <div className={css.container}>
       <ClipLoader color='#5c6297' loading={true} size={80} />
@@ -9,4 +9,4 @@ const LoaderMore = () => {
   );
 };
 
-export default LoaderMore;
+export default Loader;
